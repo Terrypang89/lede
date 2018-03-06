@@ -38,6 +38,13 @@ vr2600v)
 	ucidef_set_led_wlan "wlan5g" "WLAN5G" "${board}:white:wlan5g" "phy1tpt"
 	ucidef_set_led_switch "wan" "wan" "${board}:white:wan" "switch0" "0x20"
 	;;
+wpq864)
+	ucidef_set_rssimon "wlan0" "1000000" "1"
+	ucidef_set_led_rssi "signal1" "SIGNAL1" "rssi1" "wlan0" "85" "100" "0" "1"
+	ucidef_set_led_rssi "signal2" "SIGNAL2" "rssi2" "wlan0" "75" "100" "0" "1"
+	ucidef_set_led_rssi "signal3" "SIGNAL3" "rssi3" "wlan0" "65" "100" "0" "1"
+	ucidef_set_led_rssi "signal4" "SIGNAL4" "rssi4" "wlan0" "40" "100" "0" "1"
+	;;
 *)
 	;;
 esac
