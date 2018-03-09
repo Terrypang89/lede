@@ -304,4 +304,18 @@ define Device/zyxel_nbg6817
 endef
 TARGET_DEVICES += zyxel_nbg6817
 
+define Device/compex_wpq864
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_DTS := qcom-ipq8064-wpq864
+	KERNEL_INSTALL := 1
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	BOARD_NAME := wpq864
+	SUPPORTED_DEVICES += wpq864
+	DEVICE_TITLE := Compex WPQ864
+	DEVICE_PACKAGES := ath10k-firmware-qca99x0
+endef
+TARGET_DEVICES += compex_wpq864
+
 $(eval $(call BuildImage))
