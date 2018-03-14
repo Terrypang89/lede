@@ -1049,6 +1049,13 @@ zcn-1523h-5)
 	ucidef_set_led_netdev "lan1" "lan1" "zcn-1523h:green:lan1" "eth0"
 	ucidef_set_led_netdev "lan2" "lan2" "zcn-1523h:green:lan2" "eth1"
 	;;
+wpj563)
+	ucidef_set_rssimon "wlan0" "1000000" "1"
+        ucidef_set_led_rssi "sig1" "SIG1" "wpj563:green:sig1" "wlan0" "85" "100" "0" "1"
+        ucidef_set_led_rssi "sig2" "SIG2" "wpj563:green:sig2" "wlan0" "75" "100" "0" "1"
+        ucidef_set_led_rssi "sig3" "SIG3" "wpj563:green:sig3" "wlan0" "65" "100" "0" "1"
+        ucidef_set_led_rssi "sig4" "SIG4" "wpj563:green:sig4" "wlan0" "50" "100" "0" "1"
+	;;
 esac
 
 board_config_flush

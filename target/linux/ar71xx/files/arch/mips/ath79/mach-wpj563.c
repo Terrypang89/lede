@@ -48,6 +48,8 @@
 #define WPJ563_MAC1_OFFSET               0x18
 #define WPJ563_WMAC_CALDATA_OFFSET       0x1000
 
+#define WPJ563_GPIO_MDC		3
+#define WPJ563_GPIO_MDIO	4
 static struct gpio_led WPJ563_leds_gpio[] __initdata = {
 	{
 		.name		= "wpj563:green:sig1",
@@ -111,6 +113,11 @@ static struct mdio_board_info WPJ563_mdio0_info[] = {
 	},
 };
 
+static void __init WPJ563_mdio_setup(void){
+	ath79_gpio_output_select(WPJ563_GPIO_MDC, QCA956X_GPIO_OUT_MUX_GE0_MDC);
+	ath79_gpio_output_select(WPJ563_GPIO_MDIO, QCA956X_GPIO_OUT_MUX_GE0_MDO);
+}
+
 static void __init WPJ563_setup(void)
 {
 	u8 *art = (u8 *) KSEG1ADDR(0x1fff0000);
@@ -132,6 +139,7 @@ static void __init WPJ563_setup(void)
 
 	mdiobus_register_board_info(WPJ563_mdio0_info,
 				    ARRAY_SIZE(WPJ563_mdio0_info));
+	WPJ563_mdio_setup();
 	ath79_register_mdio(0, 0x0);
 
 	ath79_init_mac(ath79_eth0_data.mac_addr, mac + WPJ563_MAC0_OFFSET, 0);
@@ -143,6 +151,7 @@ static void __init WPJ563_setup(void)
 	ath79_eth0_data.duplex = DUPLEX_FULL;
 	ath79_eth0_data.phy_mask = BIT(0);
 	ath79_eth0_data.mii_bus_dev = &ath79_mdio0_device.dev;
+	ath79_eth0_pll_data.pll_1000 = 0x06000000;
 
 	ath79_register_eth(0);
 }
