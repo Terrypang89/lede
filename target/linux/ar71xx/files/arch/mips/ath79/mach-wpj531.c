@@ -35,7 +35,9 @@
 #include "dev-wmac.h"
 #include "machtypes.h"
 
-#define WPJ531_GPIO_LED_SIG1    13
+#define WPJ531_GPIO_LED_LAN1	11
+#define WPJ531_GPIO_LED_LAN2	13
+#define WPJ531_GPIO_LED_SIG1    12
 #define WPJ531_GPIO_LED_SIG2    14
 #define WPJ531_GPIO_LED_SIG3    15
 #define WPJ531_GPIO_LED_SIG4    16
@@ -102,6 +104,7 @@ static void __init common_setup(void)
 	ath79_setup_ar933x_phy4_switch(false, false);
 
 	ath79_register_mdio(0, 0x0);
+	ath79_register_mdio(1, 0x0);
 
 	/* LAN */
 	ath79_eth0_data.duplex = DUPLEX_FULL;
@@ -129,7 +132,13 @@ static void __init common_setup(void)
 static void __init wpj531_setup(void)
 {
 	common_setup();
-
+	
+	ath79_gpio_direction_select(WPJ531_GPIO_LED_LAN1, true);
+	ath79_gpio_direction_select(WPJ531_GPIO_LED_LAN2, true);
+	
+	ath79_gpio_output_select(WPJ531_GPIO_LED_LAN1, QCA953X_GPIO_OUT_MUX_LED_LINK3);
+	ath79_gpio_output_select(WPJ531_GPIO_LED_LAN2, QCA953X_GPIO_OUT_MUX_LED_LINK5);
+	
 	ath79_register_leds_gpio(-1,
 				ARRAY_SIZE(wpj531_leds_gpio),
 				wpj531_leds_gpio);
