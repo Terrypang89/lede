@@ -11,6 +11,7 @@ platform_check_image() {
 platform_do_upgrade() {
 	case "$(board_name)" in
 	compex,wpq864|\
+  compex,wpq865|\
 	netgear,d7800 |\
 	netgear,r7500 |\
 	netgear,r7500v2 |\

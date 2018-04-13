@@ -84,6 +84,17 @@ define Device/compex_wpq864
 endef
 TARGET_DEVICES += compex_wpq864
 
+define Device/compex_wpq865
+	$(call Device/FitImage)
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	DEVICE_DTS := qcom-ipq8064-wpq865
+	DEVICE_TITLE := Compex WPQ865
+	IMAGES := sysupgrade.bin
+	DEVICE_PACKAGES := kmod-gpio-beeper
+endef
+TARGET_DEVICES += compex_wpq865
+
 define Device/linksys_ea8500
 	$(call Device/LegacyImage)
 	DEVICE_DTS := qcom-ipq8064-ea8500
@@ -239,19 +250,5 @@ define Device/zyxel_nbg6817
 	$(call Device/ZyXELImage)
 endef
 TARGET_DEVICES += zyxel_nbg6817
-
-define Device/compex_wpq864
-	$(call Device/FitImage)
-	$(call Device/UbiFit)
-	DEVICE_DTS := qcom-ipq8064-wpq864
-	KERNEL_INSTALL := 1
-	BLOCKSIZE := 128k
-	PAGESIZE := 2048
-	BOARD_NAME := wpq864
-	SUPPORTED_DEVICES += wpq864
-	DEVICE_TITLE := Compex WPQ864
-	DEVICE_PACKAGES := ath10k-firmware-qca99x0
-endef
-TARGET_DEVICES += compex_wpq864
 
 $(eval $(call BuildImage))
