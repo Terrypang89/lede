@@ -1,0 +1,18 @@
+--- a/src/ap/dfs.c
++++ b/src/ap/dfs.c
+@@ -720,13 +720,13 @@ int hostapd_handle_dfs(struct hostapd_if
+ 	hostapd_set_state(iface, HAPD_IFACE_DFS);
+ 	wpa_printf(MSG_DEBUG, "DFS start CAC on %d MHz", iface->freq);
+ 	wpa_msg(iface->bss[0]->msg_ctx, MSG_INFO, DFS_EVENT_CAC_START
+-		"freq=%d chan=%d sec_chan=%d, width=%d, seg0=%d, seg1=%d, cac_time=%ds",
++		"freq=%d chan=%d sec_chan=%d, width=%d, seg0=%d, seg1=%d, cac_time=%dms",
+ 		iface->freq,
+ 		iface->conf->channel, iface->conf->secondary_channel,
+ 		iface->conf->vht_oper_chwidth,
+ 		iface->conf->vht_oper_centr_freq_seg0_idx,
+ 		iface->conf->vht_oper_centr_freq_seg1_idx,
+-		iface->dfs_cac_ms / 1000);
++		iface->dfs_cac_ms);
+ 
+ 	res = hostapd_start_dfs_cac(iface, iface->conf->hw_mode,
+ 				    iface->freq,
