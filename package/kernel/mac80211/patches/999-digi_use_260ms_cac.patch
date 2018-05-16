@@ -1,10 +1,16 @@
 --- a/include/net/cfg80211.h
 +++ b/include/net/cfg80211.h
-@@ -118,7 +118,7 @@ enum ieee80211_channel_flags {
+@@ -118,7 +118,13 @@ enum ieee80211_channel_flags {
  #define IEEE80211_CHAN_NO_HT40 \
  	(IEEE80211_CHAN_NO_HT40PLUS | IEEE80211_CHAN_NO_HT40MINUS)
  
 -#define IEEE80211_DFS_MIN_CAC_TIME_MS		60000
++/*
++*	Digi customization:
++*		- Fix DFS CAC time at 260ms.
++*		- Because LEDE mac80211 doesn't set dfs cac time by default (cac_time = 0), it always use the Minimum CAC time
++*		for every channel in every regulatory domains
++*/
 +#define IEEE80211_DFS_MIN_CAC_TIME_MS		260
  #define IEEE80211_DFS_MIN_NOP_TIME_MS		(30 * 60 * 1000)
  
