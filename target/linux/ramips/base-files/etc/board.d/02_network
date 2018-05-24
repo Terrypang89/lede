@@ -44,6 +44,7 @@ ramips_setup_interfaces()
 	all0256n-8M|\
 	all5002|\
 	all5003|\
+	bocco|\
 	broadway|\
 	dcs-930|\
 	dcs-930l-b1|\
@@ -61,6 +62,7 @@ ramips_setup_interfaces()
 	widora,neo-32m|\
 	wnce2001|\
 	zbt-cpe102|\
+	zorlik,zl5900v2|\
 	zte-q7)
 		ucidef_add_switch "switch0"
 		ucidef_add_switch_attr "switch0" "enable" "false"
@@ -81,6 +83,7 @@ ramips_setup_interfaces()
 	dir-610-a1|\
 	dir-615-h1|\
 	dlink,dwr-116-a1|\
+	dlink,dwr-921-c1|\
 	ew1200|\
 	firewrt|\
 	hc5661a|\
@@ -110,7 +113,9 @@ ramips_setup_interfaces()
 	u7621-06-256M-16M|\
 	vr500|\
 	wf-2881|\
-	witi|\
+	whr-g300n|\
+	mqmaker,witi-256m|\
+	mqmaker,witi-512m|\
 	wl-wn575a3|\
 	wndr3700v5|\
 	youku-yk1|\
@@ -205,9 +210,11 @@ ramips_setup_interfaces()
 	ubnt-erx|\
 	ubnt-erx-sfp|\
 	ur-326n4g|\
+	ravpower,wd03|\
 	wrtnode|\
 	wrtnode2p | \
 	wrtnode2r | \
+	youhua,wr1200js|\
 	zbt-wa05)
 		ucidef_add_switch "switch0" \
 			"1:lan" "2:lan" "3:lan" "4:lan" "0:wan" "6@eth0"
@@ -433,14 +440,16 @@ ramips_setup_macs()
 		lan_mac=$(mtd_get_mac_ascii factory lanmac)
 		wan_mac=$(mtd_get_mac_ascii factory wanmac)
 		;;
-	dlink,dwr-116-a1)
+	dlink,dwr-116-a1|\
+	dlink,dwr-921-c1)
 		wan_mac=$(jboot_config_read -m -i $(find_mtd_part "config") -o 0xE000)
 		lan_mac=$(macaddr_add "$wan_mac" 1)
 		;;
 	e1700)
 		wan_mac=$(mtd_get_mac_ascii config WAN_MAC_ADDR)
 		;;
-	gl-mt300n-v2)
+	gl-mt300n-v2|\
+	whr-g300n)
 		wan_mac=$(mtd_get_mac_binary factory 4)
 		;;
 	hc5*61|\
