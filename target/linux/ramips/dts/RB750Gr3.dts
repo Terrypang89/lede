@@ -9,10 +9,6 @@
 	compatible = "mikrotik,rb750gr3", "mediatek,mt7621-soc";
 	model = "MikroTik RB750Gr3";
 
-	aliases {
-		led-status = &led_pwr;
-	};
-
 	memory@0 {
 		device_type = "memory";
 		reg = <0x0 0x10000000>;
@@ -25,7 +21,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_pwr: pwr {
+		pwr {
 			label = "rb750gr3:blue:pwr";
 			gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
 		};

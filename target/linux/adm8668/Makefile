@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 ARCH:=mipsel
 BOARD:=adm8668
 BOARDNAME:=Infineon WildPass ADM8668
-FEATURES:=squashfs usb pci source-only
+FEATURES:=squashfs usb pci
 MAINTAINER:=Florian Fainelli <florian@openwrt.org>
 
 KERNEL_PATCHVER:=3.18

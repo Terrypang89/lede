@@ -9,10 +9,6 @@
 	compatible = "buffalo,whr-1166d", "ralink,mt7620a-soc";
 	model = "Buffalo WHR-1166D";
 
-	aliases {
-		led-status = &led_power_green;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
@@ -26,7 +22,7 @@
 			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 		};
 
-		led_power_green: power2 {
+		power2 {
 			label = "whr-1166d:green:power";
 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};

@@ -11,10 +11,6 @@
 	compatible = "asus,rt-n15", "ralink,rt2880-soc";
 	model = "Asus RT-N15";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	cfi@1f000000 {
 		compatible = "cfi-flash";
 		reg = <0x1f000000 0x800000>;
@@ -75,7 +71,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power: power {
+		power {
 			label = "rt-n15:blue:power";
 			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};

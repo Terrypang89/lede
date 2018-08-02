@@ -9,10 +9,6 @@
 	compatible = "tplink,tl-wr840n-v5", "mediatek,mt7628an-soc";
 	model = "TP-Link TL-WR840N v5";
 
-	aliases {
-		led-status = &led_power_green;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -38,7 +34,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power_green: power {
+		power {
 			label = "tl-wr840n-v5:green:power";
 			gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
 		};

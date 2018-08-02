@@ -10,8 +10,9 @@
 	compatible = "ubnt,unifi", "qca,ar7241";
 	model = "Ubiquiti UniFi AP";
 
-	aliases {
-		led-status = &dome_green;
+	memory@0 {
+		device_type = "memory";
+		reg = <0x0 0x4000000>;
 	};
 
 	extosc: ref {
@@ -26,7 +27,8 @@
 		#size-cells = <0>;
 
 		poll-interval = <20>;
-		reset {
+		button@0 {
+			label = "reset";
 			linux,code = <KEY_RESTART>;
 			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
 			debounce-interval = <60>;
@@ -35,12 +37,12 @@
 
 	leds {
 		compatible = "gpio-leds";
-		dome_green: dome-green {
+		led@0 {
 			label = "ubnt:green:dome";
 			gpios = <&gpio 0 GPIO_ACTIVE_HIGH>;
 		};
 
-		dome-orange {
+		led@1 {
 			label = "ubnt:orange:dome";
 			gpios = <&gpio 1 GPIO_ACTIVE_HIGH>;
 		};
@@ -111,9 +113,18 @@
 &pcie {
 	status = "okay";
 
-	ath9k@0 {
+	ath9k@0000 {
 		reg = <0x0000 0 0 0 0>;
 		qca,no-eeprom;
+	};
+};
+
+&mdio0 {
+	status = "okay";
+
+	phy4: ethernet-phy@4 {
+		reg = <4>;
+		phy-mode = "mii";
 	};
 };
 
@@ -121,10 +132,11 @@
 	status = "okay";
 
 	mtd-mac-address = <&art 0x0>;
+	phy-handle = <&phy4>;
 };
 
 &eth1 {
 	status = "okay";
 
-	compatible = "syscon", "simple-mfd";
+	compatible = "syscon";
 };

@@ -9,14 +9,10 @@
 	compatible = "vonets,var11n-300", "ralink,mt7620n-soc";
 	model = "Vonets VAR11N-300";
 
-	aliases {
-		led-status = &led_system;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_system: system {
+		system {
 			label = "var11n-300:blue:system";
 			gpios = <&gpio0 0 GPIO_ACTIVE_HIGH>;
 		};

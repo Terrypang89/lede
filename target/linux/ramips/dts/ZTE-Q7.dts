@@ -9,10 +9,6 @@
 	compatible = "zte,q7", "ralink,mt7620a-soc";
 	model = "ZTE Q7";
 
-	aliases {
-		led-status = &led_status_blue;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
@@ -21,7 +17,7 @@
 			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
-		led_status_blue: statblue {
+		statblue {
 			label = "zte-q7:blue:status";
 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};

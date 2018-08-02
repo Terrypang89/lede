@@ -29,35 +29,7 @@
 #include <linux/clk.h>
 #include <linux/reset.h>
 
-#include <linux/io.h>
-#include <linux/sizes.h>
-
-static inline void oxnas_register_clear_mask(void __iomem *p, unsigned mask)
-{
-	u32 val = readl_relaxed(p);
-
-	val &= ~mask;
-	writel_relaxed(val, p);
-}
-
-static inline void oxnas_register_set_mask(void __iomem *p, unsigned mask)
-{
-	u32 val = readl_relaxed(p);
-
-	val |= mask;
-	writel_relaxed(val, p);
-}
-
-static inline void oxnas_register_value_mask(void __iomem *p,
-					     unsigned mask, unsigned new_value)
-{
-	/* TODO sanity check mask & new_value = new_value */
-	u32 val = readl_relaxed(p);
-
-	val &= ~mask;
-	val |= new_value;
-	writel_relaxed(val, p);
-}
+#include <mach/utils.h>
 
 /* sgdma request structure */
 struct sgdma_request {
@@ -876,7 +848,7 @@ wait_for_lock:
 		 * list so want to give reentrant accessors a chance to get
 		 * access ASAP
 		 */
-		if (!list_empty(&hd->scsi_wait_queue.head))
+		if (!list_empty(&hd->scsi_wait_queue.task_list))
 			wake_up(&hd->scsi_wait_queue);
 	}
 
@@ -895,7 +867,7 @@ int sata_core_has_fast_waiters(struct ata_host *ah)
 	struct sata_oxnas_host_priv *hd = ah->private_data;
 
 	spin_lock_irqsave(&hd->core_lock, flags);
-	has_waiters = !list_empty(&hd->fast_wait_queue.head);
+	has_waiters = !list_empty(&hd->fast_wait_queue.task_list);
 	spin_unlock_irqrestore(&hd->core_lock, flags);
 
 	return has_waiters;
@@ -910,7 +882,7 @@ int sata_core_has_scsi_waiters(struct ata_host *ah)
 
 	spin_lock_irqsave(&hd->core_lock, flags);
 	has_waiters = hd->scsi_nonblocking_attempts ||
-		      !list_empty(&hd->scsi_wait_queue.head);
+		      !list_empty(&hd->scsi_wait_queue.task_list);
 	spin_unlock_irqrestore(&hd->core_lock, flags);
 
 	return has_waiters;
@@ -982,7 +954,7 @@ static void sata_oxnas_release_hw(struct ata_port *ap)
 			hd->locker_uid = 0;
 			hd->core_locked = 0;
 			released = 1;
-			wake_up(!list_empty(&hd->scsi_wait_queue.head) ?
+			wake_up(!list_empty(&hd->scsi_wait_queue.task_list) ?
 						&hd->scsi_wait_queue :
 						&hd->fast_wait_queue);
 		}

@@ -9,14 +9,10 @@
 	compatible = "jcg,jhr-n805r", "ralink,rt3050-soc";
 	model = "JCG JHR-N805R";
 
-	aliases {
-		led-status = &led_system;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_system: system {
+		system {
 			label = "jhr-n805r:blue:system";
 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};

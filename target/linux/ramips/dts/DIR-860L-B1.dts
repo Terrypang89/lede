@@ -9,10 +9,6 @@
 	compatible = "dlink,dir-860l-b1", "mediatek,mt7621-soc";
 	model = "D-Link DIR-860L B1";
 
-	aliases {
-		led-status = &led_power_green;
-	};
-
 	memory@0 {
 		device_type = "memory";
 		reg = <0x0 0x8000000>;
@@ -30,7 +26,7 @@
 			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
 		};
 
-		led_power_green: power2 {
+		power2 {
 			label = "dir-860l-b1:green:power";
 			gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
 		};

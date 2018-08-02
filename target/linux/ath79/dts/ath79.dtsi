@@ -43,7 +43,7 @@
 		eth0: eth@19000000 {
 			status = "disabled";
 
-			compatible = "qca,ath79-eth", "syscon", "simple-mfd";
+			compatible = "qca,ath79-eth", "syscon";
 			reg = <0x19000000 0x200>;
 
 			interrupts = <4>;
@@ -51,10 +51,6 @@
 
 			mdio0: mdio-bus {
 				status = "disabled";
-
-				compatible = "qca,ath79-mdio";
-				#address-cells = <1>;
-				#size-cells = <0>;
 
 				regmap = <&eth0>;
 
@@ -66,7 +62,7 @@
 		eth1: eth@1a000000 {
 			status = "disabled";
 
-			compatible = "qca,ath79-eth", "syscon", "simple-mfd";
+			compatible = "qca,ath79-eth", "syscon";
 			reg = <0x1a000000 0x200>;
 
 			interrupts = <5>;
@@ -74,10 +70,6 @@
 
 			mdio1: mdio-bus {
 				status = "disabled";
-
-				compatible = "qca,ath79-mdio";
-				#address-cells = <1>;
-				#size-cells = <0>;
 
 				regmap = <&eth1>;
 

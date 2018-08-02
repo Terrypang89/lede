@@ -403,7 +403,7 @@ define Package/ath10k-firmware-qca4019/install
 		$(PKG_BUILD_DIR)/QCA4019/hw1.0/board-2.bin \
 		$(1)/lib/firmware/ath10k/QCA4019/hw1.0/
 	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/QCA4019/hw1.0/3.5.3/firmware-5.bin_10.4-3.5.3-00057 \
+		$(PKG_BUILD_DIR)/QCA4019/hw1.0/3.4/firmware-5.bin_10.4-3.4-00104 \
 		$(1)/lib/firmware/ath10k/QCA4019/hw1.0/firmware-5.bin
 endef
 
@@ -438,20 +438,8 @@ define Package/ath10k-firmware-qca988x/install
 endef
 
 define Package/ath10k-firmware-qca6174/install
-	$(INSTALL_DIR) $(1)/lib/firmware/ath10k/QCA6174/hw2.1
-	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/QCA6174/hw2.1/board-2.bin \
-		$(1)/lib/firmware/ath10k/QCA6174/hw2.1/
-	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/QCA6174/hw2.1/firmware-5.bin_SW_RM.1.1.1-00157-QCARMSWPZ-1 \
-		$(1)/lib/firmware/ath10k/QCA6174/hw2.1/firmware-5.bin
-	$(INSTALL_DIR) $(1)/lib/firmware/ath10k/QCA6174/hw3.0
-	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/QCA6174/hw3.0/board-2.bin \
-		$(1)/lib/firmware/ath10k/QCA6174/hw3.0/
-	$(INSTALL_DATA) \
-		$(PKG_BUILD_DIR)/QCA6174/hw3.0/4.4.1.c1/firmware-6.bin_RM.4.4.1.c1-00042-QCARMSWP-1 \
-		$(1)/lib/firmware/ath10k/QCA6174/hw3.0/firmware-6.bin
+	$(INSTALL_DIR) $(1)/lib/firmware/ath10k
+	$(CP) $(PKG_BUILD_DIR)/QCA6174 $(1)/lib/firmware/ath10k/
 endef
 
 define Package/ath10k-firmware-qca99x0/install

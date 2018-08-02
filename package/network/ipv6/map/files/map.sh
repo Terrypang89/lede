@@ -28,9 +28,9 @@ proto_map_setup() {
 	# uncomment for legacy MAP0 mode
 	#export LEGACY=1
 
-	local type mtu ttl tunlink zone encaplimit
+	local type mtu ttl tunlink zone
 	local rule ipaddr ip4prefixlen ip6prefix ip6prefixlen peeraddr ealen psidlen psid offset
-	json_get_vars type mtu ttl tunlink zone encaplimit
+	json_get_vars type mtu ttl tunlink zone
 	json_get_vars rule ipaddr ip4prefixlen ip6prefix ip6prefixlen peeraddr ealen psidlen psid offset
 
 	[ -z "$zone" ] && zone="wan"
@@ -84,9 +84,9 @@ proto_map_setup() {
 		json_add_string local $(eval "echo \$RULE_${k}_IPV6ADDR")
 		json_add_string remote $(eval "echo \$RULE_${k}_BR")
 		json_add_string link $(eval "echo \$RULE_${k}_PD6IFACE")
-		json_add_object "data"
-			json_add_string encaplimit "${encaplimit:-4}"
-			if [ "$type" = "map-e" ]; then
+
+		if [ "$type" = "map-e" ]; then
+			json_add_object "data"
 				json_add_array "fmrs"
 				for i in $(seq $RULE_COUNT); do
 					[ "$(eval "echo \$RULE_${i}_FMR")" != 1 ] && continue
@@ -98,9 +98,8 @@ proto_map_setup() {
 					json_close_object
 				done
 				json_close_array
-			fi
-		json_close_object
-
+			json_close_object
+		fi
 
 		proto_close_tunnel
 	elif [ "$type" = "map-t" -a -f "/proc/net/nat46/control" ]; then
@@ -230,7 +229,6 @@ proto_map_init_config() {
 	proto_config_add_int "mtu"
 	proto_config_add_int "ttl"
 	proto_config_add_string "zone"
-	proto_config_add_string "encaplimit"
 }
 
 [ -n "$INCLUDE_ONLY" ] || {

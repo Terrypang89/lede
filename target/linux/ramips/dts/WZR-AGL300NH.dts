@@ -11,10 +11,6 @@
 	compatible = "buffalo,wzr-agl300nh", "ralink,rt2880-soc";
 	model = "Buffalo WZR-AGL300NH";
 
-	aliases {
-		led-status = &led_router;
-	};
-
 	pci@440000 {
 		status = "ok";
 	};
@@ -85,7 +81,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_router: router {
+		router {
 			label = "wzr-agl300nh:green:router";
 			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 		};

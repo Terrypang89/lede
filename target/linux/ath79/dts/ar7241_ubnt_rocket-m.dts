@@ -9,7 +9,7 @@
 };
 
 &eth1 {
-	compatible = "syscon", "simple-mfd";
+	compatible = "syscon";
 };
 
 &usb_phy {

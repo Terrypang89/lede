@@ -9,10 +9,6 @@
 	compatible = "youhua,wr1200js", "mediatek,mt7621-soc";
 	model = "YouHua WR1200JS";
 
-	aliases {
-		led-status = &led_wps;
-	};
-
 	memory@0 {
 		device_type = "memory";
 		reg = <0x0 0x8000000>;
@@ -30,7 +26,7 @@
 			gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
 		};
 
-		led_wps: wps {
+		wps {
 			label = "wr1200js:blue:wps";
 			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
 		};

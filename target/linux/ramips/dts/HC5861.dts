@@ -6,14 +6,10 @@
 	compatible = "hiwifi,hc5861", "hiwifi,hc5x61", "ralink,mt7620a-soc";
 	model = "HiWiFi HC5861";
 
-	aliases {
-		led-status = &led_system;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_system: system {
+		system {
 			label = "hc5861:blue:system";
 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
 		};

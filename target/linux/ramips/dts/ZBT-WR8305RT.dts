@@ -9,14 +9,10 @@
 	compatible = "zbtlink,zbt-wr8305rt", "ralink,mt7620n-soc";
 	model = "Zbtlink ZBT-WR8305RT";
 
-	aliases {
-		led-status = &led_sys;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_sys: sys {
+		sys {
 			label = "zbt-wr8305rt:green:sys";
 			gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
 		};

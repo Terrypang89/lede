@@ -9,10 +9,6 @@
 	compatible = "intenso,memory2move", "ralink,rt5350-soc";
 	model = "Intenso Memory 2 Move";
 
-	aliases {
-		led-status = &led_wifi;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,57600n8 root=/dev/mtdblock5";
 	};
@@ -20,7 +16,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_wifi: wifi {
+		wifi {
 			label = "m2m:blue:wifi";
 			gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
 		};

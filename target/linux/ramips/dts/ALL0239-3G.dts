@@ -9,10 +9,6 @@
 	compatible = "allnet,all0239-3g", "ralink,rt3052-soc";
 	model = "Allnet ALL0239-3G";
 
-	aliases {
-		led-status = &led_status;
-	};
-
 
 	cfi@1f000000 {
 		compatible = "cfi-flash";
@@ -59,7 +55,7 @@
 			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};
 
-		led_status: status {
+		status {
 			label = "all0239-3g:green:status";
 			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};

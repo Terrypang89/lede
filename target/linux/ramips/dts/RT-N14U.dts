@@ -9,10 +9,6 @@
 	compatible = "asus,rt-n14u", "ralink,mt7620n-soc";
 	model = "Asus RT-N14U";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
@@ -31,7 +27,7 @@
 			gpios = <&gpio2 2 GPIO_ACTIVE_LOW>;
 		};
 
-		led_power: power {
+		power {
 			label = "rt-n14u:blue:power";
 			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
 		};

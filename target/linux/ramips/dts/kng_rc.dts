@@ -9,10 +9,6 @@
 	compatible = "zyxel,keenetic-viva", "ralink,mt7620a-soc";
 	model = "ZyXEL Keenetic Viva";
 
-	aliases {
-		led-status = &led_power_green;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
@@ -36,7 +32,7 @@
 			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};
 
-		led_power_green: power {
+		power {
 			label = "kng_rc:green:power";
 			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 		};
@@ -82,7 +78,7 @@
 		compatible = "realtek,rtl8367b";
 		cpu_port = <7>;
 		realtek,extif2 = <1 0 1 1 1 1 1 1 2>;
-		mii-bus = <&mdio0>;
+		mdio = <&mdio0>;
 	};
 };
 

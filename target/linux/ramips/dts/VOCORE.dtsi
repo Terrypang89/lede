@@ -5,10 +5,6 @@
 / {
 	compatible = "vocore,vocore", "ralink,rt5350-soc";
 
-	aliases {
-		led-status = &led_status;
-	};
-
 	gpio-export {
 		compatible = "gpio-export";
 		#size-cells = <0>;
@@ -138,7 +134,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_status: status {
+		status {
 			/* UARTF_RXD */
 			label = "vocore:green:status";
 			gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;

@@ -9,10 +9,6 @@
 	compatible = "petatel,psr-680w", "ralink,rt3052-soc";
 	model = "Petatel PSR-680W Wireless 3G Router";
 
-	aliases {
-		led-status = &led_wan;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -52,7 +48,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_wan: wan {
+		wan {
 			label = "psr-680w:red:wan";
 			gpios = <&gpio0 19 GPIO_ACTIVE_LOW>;
 		};

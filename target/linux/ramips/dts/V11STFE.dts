@@ -9,10 +9,6 @@
 	compatible = "ralink,v11st-fe", "ralink,rt2880-soc";
 	model = "Ralink V11ST-FE";
 
-	aliases {
-		led-status = &led_status;
-	};
-
 	pci@440000 {
 		status = "okay";
 
@@ -70,7 +66,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_status: status {
+		status {
 			label = "v11st-fe:green:status";
 			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
 		};

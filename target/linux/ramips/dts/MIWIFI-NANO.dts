@@ -9,10 +9,6 @@
 	compatible = "xiaomi,miwifi-nano", "mediatek,mt7628an-soc";
 	model = "MiWiFi Nano";
 
-	aliases {
-		led-status = &led_blue;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -25,7 +21,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_blue: status_blue {
+		status_blue {
 			label = "miwifi-nano:blue:status";
 			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 		};

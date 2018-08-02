@@ -9,10 +9,6 @@
 	compatible = "netgear,wnce2001", "ralink,rt3052-soc";
 	model = "Netgear WNCE2001";
 
-	aliases {
-		led-status = &led_power_green;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -20,7 +16,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power_green: power-green {
+		power-green {
 			label = "wnce2001:green:power";
 			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
 		};

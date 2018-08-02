@@ -9,14 +9,10 @@
 	compatible = "kingston,mlwg2", "ralink,mt7620n-soc";
 	model = "Kingston MLWG2";
 
-	aliases {
-		led-status = &led_system;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_system: system {
+		system {
 			label = "mlwg2:blue:system";
 			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
 		};

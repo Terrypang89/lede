@@ -78,18 +78,18 @@ rootfs_type() {
 
 get_image() { # <source> [ <command> ]
 	local from="$1"
-	local cmd="$2"
+	local cat="$2"
 
-	if [ -z "$cmd" ]; then
+	if [ -z "$cat" ]; then
 		local magic="$(dd if="$from" bs=2 count=1 2>/dev/null | hexdump -n 2 -e '1/1 "%02x"')"
 		case "$magic" in
-			1f8b) cmd="zcat";;
-			425a) cmd="bzcat";;
-			*) cmd="cat";;
+			1f8b) cat="zcat";;
+			425a) cat="bzcat";;
+			*) cat="cat";;
 		esac
 	fi
 
-	cat "$from" 2>/dev/null | $cmd
+	$cat "$from" 2>/dev/null
 }
 
 get_magic_word() {
@@ -222,7 +222,6 @@ default_do_upgrade() {
 	else
 		get_image "$1" "$2" | mtd write - "${PART_NAME:-image}"
 	fi
-	[ $? -ne 0 ] && exit 1
 }
 
 do_upgrade_stage2() {

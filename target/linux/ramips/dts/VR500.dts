@@ -9,10 +9,6 @@
 	compatible = "planex,vr500", "mediatek,mt7621-soc";
 	model = "Planex VR500";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	memory@0 {
 		device_type = "memory";
 		reg = <0x0 0x10000000>;
@@ -25,7 +21,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power: power {
+		power {
 			label = "vr500:green:power";
 			gpios = <&gpio1 13 GPIO_ACTIVE_LOW>;
 		};

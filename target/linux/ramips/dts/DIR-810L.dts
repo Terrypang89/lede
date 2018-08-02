@@ -9,10 +9,6 @@
 	compatible = "dlink,dir-810l", "ralink,mt7620a-soc";
 	model = "D-Link DIR-810L";
 
-	aliases {
-		led-status = &led_power_green;
-	};
-
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
 		#address-cells = <1>;
@@ -35,7 +31,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power_green: power {
+		power {
 			label = "dir-810l:green:power";
 			gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
 		};
@@ -45,7 +41,7 @@
 			gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
 		};
 
-		power2 {
+		status {
 			label = "dir-810l:orange:power";
 			gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
 		};

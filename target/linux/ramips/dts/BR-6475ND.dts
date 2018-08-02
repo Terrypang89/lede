@@ -9,10 +9,6 @@
 	compatible = "edimax,br-6475nd", "ralink,rt3883-soc";
 	model = "Edimax BR-6475nD";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
 		#address-cells = <1>;
@@ -36,7 +32,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power: power {
+		power {
 			label = "br-6475nd:green:power";
 			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
 		};

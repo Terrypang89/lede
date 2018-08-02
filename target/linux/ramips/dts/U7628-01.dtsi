@@ -40,10 +40,6 @@
 / {
 	compatible = "unielec,u7628-01", "mediatek,mt7628an-soc";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -63,7 +59,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_power: power {
+		power {
 			label = "u7628-01:green:power";
 			gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
 		};

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 set -x
-[ $# -eq 5 ] || {
-    echo "SYNTAX: $0 <file> <bootfs image> <rootfs image> <bootfs size> <rootfs size>"
+[ $# -eq 3 ] || {
+    echo "SYNTAX: $0 <file> <bootfs image> <rootfs image>"
     exit 1
 }
 
 OUTPUT="$1"
 BOOTFS="$2"
 ROOTFS="$3"
-BOOTFSSIZE="$4"
-ROOTFSSIZE="$5"
+let "BOOTFSSIZE=(`stat -c%s "$2"` + 1048575) / 1048576"
+let "ROOTFSSIZE=(`stat -c%s "$3"` + 1048575) / 1048576"
 
 head=4
 sect=63

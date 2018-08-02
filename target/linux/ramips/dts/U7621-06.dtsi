@@ -40,10 +40,6 @@
 / {
 	compatible = "unielec,u7621-06", "mediatek,mt7621-soc";
 
-	aliases {
-		led-status = &led_status;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -75,7 +71,7 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_status: status {
+		status {
 			label = "u7621-06:green:status";
 			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
 		};

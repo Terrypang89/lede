@@ -20,7 +20,6 @@ include ./generic-tp-link.mk
 include ./generic-ubnt.mk
 endif
 ifeq ($(SUBTARGET),tiny)
-include ./tiny.mk
 include ./tiny-tp-link.mk
 include ./tiny-legacy-devices.mk
 endif

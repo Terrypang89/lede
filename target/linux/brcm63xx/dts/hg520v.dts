@@ -40,7 +40,9 @@
 &pflash {
 	status = "ok";
 
-	partitions {
+	linux,part-probe = "bcm63xxpart";
+
+		partitions {
 		compatible = "fixed-partitions";
 		#address-cells = <1>;
 		#size-cells = <1>;

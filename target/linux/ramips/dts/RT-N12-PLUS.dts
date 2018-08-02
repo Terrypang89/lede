@@ -9,10 +9,6 @@
 	compatible = "asus,rt-n12p", "ralink,mt7620n-soc";
 	model = "Asus RT-N12+";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -30,7 +26,7 @@
 			gpios = <&gpio1 15 GPIO_ACTIVE_LOW>;
 		};
 
-		led_power: power {
+		power {
 			label = "rt-n12p:green:power";
 			gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
 		};

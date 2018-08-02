@@ -9,6 +9,11 @@
 	compatible = "ubnt,xm", "qca,ar7241";
 	model = "Ubiquiti Networks XM (rev 1.0) board";
 
+	memory@0 {
+		device_type = "memory";
+		reg = <0x0 0x2000000>;
+	};
+
 /*	extosc: ref {
 		compatible = "fixed-clock";
 		#clock-cells = <0>;
@@ -21,7 +26,8 @@
 		#size-cells = <0>;
 
 		poll-interval = <20>;
-		reset {
+		button@0 {
+			label = "reset";
 			linux,code = <KEY_RESTART>;
 			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
 			debounce-interval = <60>;
@@ -30,22 +36,22 @@
 
 	leds {
 		compatible = "gpio-leds";
-		link1 {
+		led@0 {
 			label = "ubnt:red:link1";
 			gpios = <&gpio 0 GPIO_ACTIVE_HIGH>;
 		};
 
-		link2 {
+		led@1 {
 			label = "ubnt:orange:link2";
 			gpios = <&gpio 1 GPIO_ACTIVE_HIGH>;
 		};
 
-		link3 {
+		led@2 {
 			label = "ubnt:green:link3";
 			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
 		};
 
-		link4 {
+		led@3 {
 			label = "ubnt:green:link4";
 			gpios = <&gpio 7 GPIO_ACTIVE_HIGH>;
 		};
@@ -116,9 +122,18 @@
 &pcie {
 	status = "okay";
 
-	ath9k@0 {
+	ath9k@0000 {
 		reg = <0x0000 0 0 0 0>;
 		qca,no-eeprom;
+	};
+};
+
+&mdio0 {
+	status = "okay";
+
+	phy4: ethernet-phy@4 {
+		reg = <4>;
+		phy-mode = "mii";
 	};
 };
 
@@ -126,6 +141,9 @@
 	status = "okay";
 
 	mtd-mac-address = <&art 0x0>;
+
+	phy-mode = "mii";
+	phy-handle = <&phy4>;
 };
 
 &eth1 {

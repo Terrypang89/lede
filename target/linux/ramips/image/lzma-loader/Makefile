@@ -16,7 +16,6 @@ TARGET_DIR	:=
 FLASH_OFFS	:=
 FLASH_MAX	:=
 BOARD		:=
-PLATFORM	:=
 
 ifeq ($(TARGET_DIR),)
 TARGET_DIR	:= $(KDIR)
@@ -43,7 +42,7 @@ loader-compile: $(PKG_BUILD_DIR)/.prepared
 		FLASH_OFFS=$(FLASH_OFFS) \
 		FLASH_MAX=$(FLASH_MAX) \
 		BOARD="$(BOARD)" \
-		PLATFORM="$(PLATFORM)" \
+		PLATFORM="ralink" \
 		clean all
 
 loader.gz: $(PKG_BUILD_DIR)/loader.bin

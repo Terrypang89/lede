@@ -6,17 +6,13 @@
 / {
 	compatible = "zbtlink,zbt-we826", "ralink,mt7620a-soc";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
 
 	gpio-leds {
 		compatible = "gpio-leds";
-		led_power: power {
+		power {
 			label = "zbt-we826:green:power";
 			gpios = <&gpio1 14 GPIO_ACTIVE_HIGH>;
 		};

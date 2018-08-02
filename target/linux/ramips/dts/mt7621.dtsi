@@ -6,23 +6,16 @@
 	compatible = "mediatek,mt7621-soc";
 
 	cpus {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
 		cpu@0 {
-			device_type = "cpu";
 			compatible = "mips,mips1004Kc";
-			reg = <0x0>;
 		};
 
 		cpu@1 {
-			device_type = "cpu";
 			compatible = "mips,mips1004Kc";
-			reg = <0x1>;
 		};
 	};
 
-	cpuintc: cpuintc {
+	cpuintc: cpuintc@0 {
 		#address-cells = <0>;
 		#interrupt-cells = <1>;
 		interrupt-controller;
@@ -33,7 +26,7 @@
 		serial0 = &uartlite;
 	};
 
-	cpuclock: cpuclock {
+	cpuclock: cpuclock@0 {
 		#clock-cells = <0>;
 		compatible = "fixed-clock";
 
@@ -41,7 +34,7 @@
 		clock-frequency = <880000000>;
 	};
 
-	sysclock: sysclock {
+	sysclock: sysclock@0 {
 		#clock-cells = <0>;
 		compatible = "fixed-clock";
 
@@ -447,10 +440,11 @@
 			0x01000000 0 0x00000000 0x1e160000 0 0x00010000 /* io space */
 		>;
 
-		interrupt-parent = <&gic>;
-		interrupts = <GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH
-				GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH
-				GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
+		#interrupt-cells = <1>;
+		interrupt-map-mask = <0xF0000 0 0 1>;
+		interrupt-map = <0x10000 0 0 1 &gic GIC_SHARED 4 IRQ_TYPE_LEVEL_HIGH>,
+				<0x20000 0 0 1 &gic GIC_SHARED 24 IRQ_TYPE_LEVEL_HIGH>,
+				<0x30000 0 0 1 &gic GIC_SHARED 25 IRQ_TYPE_LEVEL_HIGH>;
 
 		status = "disabled";
 
@@ -464,6 +458,8 @@
 
 			#address-cells = <3>;
 			#size-cells = <2>;
+
+			device_type = "pci";
 		};
 
 		pcie1 {
@@ -471,6 +467,8 @@
 
 			#address-cells = <3>;
 			#size-cells = <2>;
+
+			device_type = "pci";
 		};
 
 		pcie2 {
@@ -478,6 +476,8 @@
 
 			#address-cells = <3>;
 			#size-cells = <2>;
+
+			device_type = "pci";
 		};
 	};
 };

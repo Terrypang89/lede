@@ -9,10 +9,6 @@
 	compatible = "tplink,tl-wr840n-v4", "mediatek,mt7628an-soc";
 	model = "TP-Link TL-WR840N v4";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
 		#address-cells = <1>;
@@ -34,7 +30,7 @@
 			gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
 		};
 
-		led_power: power {
+		power {
 			label = "tl-wr840n-v4:green:power";
 			gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
 		};

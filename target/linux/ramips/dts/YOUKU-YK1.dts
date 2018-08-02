@@ -9,10 +9,6 @@
 	compatible = "youku,yk1", "ralink,mt7620a-soc";
 	model = "YOUKU YK1";
 
-	aliases {
-		led-status = &led_power;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 		wan {
@@ -27,7 +23,7 @@
 			label = "youku-yk1:blue:usb";
 			gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
 		};
-		led_power: power {
+		power {
 			label = "youku-yk1:blue:power";
 			gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
 		};

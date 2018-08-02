@@ -8,14 +8,10 @@
 	compatible = "wrtnode,wrtnode", "ralink,mt7620n-soc";
 	model = "WRTNODE";
 
-	aliases {
-		led-status = &led_indicator;
-	};
-
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		led_indicator: indicator {
+		indicator {
 			label = "wrtnode:blue:indicator";
 			gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
 		};
