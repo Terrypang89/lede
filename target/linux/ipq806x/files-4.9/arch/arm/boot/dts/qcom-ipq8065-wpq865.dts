@@ -43,8 +43,9 @@
 	aliases {
 		mdio-gpio0 = &mdio0;
 		serial0 = &gsbi4_serial;
-		ethernet0 = &gmac1;
-		ethernet1 = &gmac0;
+		ethernet0 = &gmac0;
+		ethernet1 = &gmac1;
+    ethernet2 = &gmac2;
 	};
 
 	chosen {
@@ -223,25 +224,31 @@
 
 		gpios = <&qcom_pinmux 1 GPIO_ACTIVE_HIGH &qcom_pinmux 0 GPIO_ACTIVE_HIGH>;
 
-		ethernet-phy@0 {
+		phy0: ethernet-phy@0 {
 			device_type = "ethernet-phy";
 			reg = <0>;
 			qca,ar8327-initvals = <
 				0x00004 0x7600000   /* PAD0_MODE */
 				0x00008 0x1000000   /* PAD5_MODE */
-				0x0000c 0x80        /* PAD6_MODE */
+				0x0000c 0x80     /* PAD6_MODE */
 				0x000e4 0x6a545     /* MAC_POWER_SEL */
 				0x000e0 0xc74164de  /* SGMII_CTRL */
 				0x0007c 0x4e        /* PORT0_STATUS */
 				0x00094 0x4e        /* PORT6_STATUS */
 				>;
+        
+        link-polling-required = <0>;
+        link-intr-gpio = <2>;
 		};
 
-		ethernet-phy@4 {
+		phy4: ethernet-phy@4 {
 			device_type = "ethernet-phy";
 			reg = <4>;
+      phy_rgmii_en = <1>;
+      txclk_delay_en = <1>;
+      rxclk_delay_en = <1>;
 		};
-    ethernet-phy@3 {
+    phy3: ethernet-phy@3 {
       device_type = "ethernet-phy";
       reg = <3>;
     };
@@ -311,14 +318,28 @@
 	status = "okay";
 };
 
+/*&gmac0 {
+  status = "okay";
+  phy-mode = "sgmii";
+  qcom,id = <0>;
+
+  qcom,phy_mdio_addr = <4>;
+
+	fixed-link {
+		speed = <1000>;
+		full-duplex;
+	};
+};
+*/
+
 &gmac1 {
 	status = "okay";
+	phy-mode = "rgmii";
+	qcom,id = <1>;
 
 	pinctrl-0 = <&rgmii2_pins>;
 	pinctrl-names = "default";
-
-	phy-mode = "rgmii";
-	qcom,id = <1>;
+  qcom,phy_mdio_addr = <0>;
 
 	fixed-link {
 		speed = <1000>;
@@ -331,6 +352,7 @@
 
 	phy-mode = "sgmii";
 	qcom,id = <2>;
+  qcom,phy_mdio_addr = <3>;
 
 	fixed-link {
 		speed = <1000>;
