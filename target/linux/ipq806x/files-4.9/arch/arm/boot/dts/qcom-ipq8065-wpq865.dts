@@ -260,35 +260,12 @@
 		pinctrl-0 = <&led_pins>;
 		pinctrl-names = "default";
 
-		/*
-    These leds is not connected.
-    led@7 {
-			label = "led@7";
-			gpios = <&qcom_pinmux 7 GPIO_ACTIVE_HIGH>;
-		};
-
-		led@8 {
-			label = "led@8";
-			gpios = <&qcom_pinmux 8 GPIO_ACTIVE_HIGH>;
-		};
-		led@9 {
-			label = "led@9";
-			gpios = <&qcom_pinmux 9 GPIO_ACTIVE_HIGH>;
-		};
-		led@26 {
-			label = "led@26";
-			gpios = <&qcom_pinmux 26 GPIO_ACTIVE_HIGH>;
-		};
-		led@53 {
-			label = "led@53";
-			gpios = <&qcom_pinmux 53 GPIO_ACTIVE_HIGH>;
-		};
-    */
-    /*Only led for simsel*/
+    /*led for simsel*/
     led@68{
       label = "simsel";
       gpios = <&qcom_pinmux 68 GPIO_ACTIVE_HIGH>;
     };
+
 	};
 
 	gpio-keys {
@@ -317,20 +294,6 @@
 &adm_dma {
 	status = "okay";
 };
-
-/*&gmac0 {
-  status = "okay";
-  phy-mode = "sgmii";
-  qcom,id = <0>;
-
-  qcom,phy_mdio_addr = <4>;
-
-	fixed-link {
-		speed = <1000>;
-		full-duplex;
-	};
-};
-*/
 
 &gmac1 {
 	status = "okay";
