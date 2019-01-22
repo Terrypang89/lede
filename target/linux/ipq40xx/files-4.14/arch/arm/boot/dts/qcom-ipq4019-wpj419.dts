@@ -282,7 +282,7 @@
 		};
 
     ess-switch@c000000 {
-      switch_lan_bmp = <0x10>;
+      switch_lan_bmp = <0x1e>;
       switch_wan_bmp = <0x20>;
 
       status = "okay";
