@@ -89,6 +89,17 @@ define Device/avm_fritzbox-4040
 endef
 TARGET_DEVICES += avm_fritzbox-4040
 
+define Device/compex_wpj419
+	$(call Device/FitImage)
+	DEVICE_DTS := qcom-ipq4019-wpj419
+	KERNEL_INSTALL := 1
+	KERNEL_SIZE := 4096k
+	IMAGES = sysupgrade.bin
+	IMAGE/sysupgrade.bin := append-kernel | append-rootfs| pad-rootfs| append-metadata
+	DEVICE_TITLE := Compex WPJ419
+endef
+TARGET_DEVICES += compex_wpj419
+
 define Device/compex_wpj428
 	$(call Device/FitImage)
 	DEVICE_DTS := qcom-ipq4028-wpj428
