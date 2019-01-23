@@ -129,6 +129,7 @@
 				#address-cells = <1>;
 				#size-cells = <1>;
 				reg = <0>;
+        linux,modalias = "m25p80", "mx25l1606e", "n25q128a11";
 				compatible = "jedec,spi-nor";
 				spi-max-frequency = <24000000>;
         
