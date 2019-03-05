@@ -100,6 +100,19 @@ define Device/compex_wpj419
 endef
 TARGET_DEVICES += compex_wpj419
 
+define Device/compex_wpj419-nand
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_DTS := qcom-ipq4019-wpj419-nand
+	DEVICE_DTS_CONFIG := config@12
+	KERNEL_INSTALL := 1
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	DEVICE_TITLE := Compex WPJ419 NORNAND
+	FILESYSTEMS := squashfs
+endef
+TARGET_DEVICES += compex_wpj419-nand
+
 define Device/compex_wpj428
 	$(call Device/FitImage)
 	DEVICE_DTS := qcom-ipq4028-wpj428
