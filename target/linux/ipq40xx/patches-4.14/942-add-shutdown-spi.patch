@@ -1,0 +1,30 @@
+--- a/drivers/mtd/devices/m25p80.c
++++ b/drivers/mtd/devices/m25p80.c
+@@ -314,6 +314,19 @@ static int m25p_remove(struct spi_device
+ }
+ 
+ /*
++ * Adding m25p_shutdown for fixing reboot problem
++*/
++static void m25p_shutdown(struct spi_device *spi)
++{
++	struct m25p *flash = spi_get_drvdata(spi);
++
++	flash->command[0] = 0x66;
++	spi_write(flash->spi, flash->command, 1);
++	flash->command[0] = 0x99;
++	spi_write(flash->spi, flash->command, 1);
++}
++
++/*
+  * Do NOT add to this array without reading the following:
+  *
+  * Historically, many flash devices are bound to this driver by their name. But
+@@ -387,6 +400,7 @@ static struct spi_driver m25p80_driver =
+ 	.id_table	= m25p_ids,
+ 	.probe	= m25p_probe,
+ 	.remove	= m25p_remove,
++	.shutdown = m25p_shutdown,
+ 
+ 	/* REVISIT: many of these chips have deep power-down modes, which
+ 	 * should clearly be entered on suspend() to minimize power use.
