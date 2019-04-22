@@ -31,7 +31,7 @@
 			status = "okay";
       pinctrl-0 = <&mdio_pins>;
       pinctrl-names = "default";
-      phy-reset-gpio = <0x10 0x3b 0x0>;
+      phy-reset-gpio = <&tlmm 59 0>;
 		};
 
 		ess-psgmii@98000 {
