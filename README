@@ -27,3 +27,11 @@ Sunshine!
 	http://www.openwrt.org
 
 
+====================================================================================================
+This Fork is for Compex devices supporting.
+Currently, Following boards are supported (based on Openwrt 18.06)
+WPJ428
+WPJ419 Nor flash
+WPJ419 Nor+Nand flash.
+WPQ864 nand flash
+WPQ865 nand flash
