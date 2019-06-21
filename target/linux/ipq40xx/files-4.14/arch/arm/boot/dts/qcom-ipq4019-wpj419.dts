@@ -83,10 +83,10 @@
       i2c_0_pins: i2c_0_pinmux {
         pinmux {
           function = "blsp_i2c0";
-          pins = "gpio10", "gpio11";
+          pins = "gpio20", "gpio21";
         };
         pinconf {
-          pins = "gpio10", "gpio11";
+          pins = "gpio20", "gpio21";
           drive-strength = <16>;
           bias-disable;
         };
