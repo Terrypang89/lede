@@ -3,18 +3,18 @@
 ## I. Flashing instruction for Ar71xx Devices
 ### 1. WPJ558
 
-    ```shell
-    tftp 0x80060000 openwrt-ar71xx-generic-wpj558-squashfs-sysupgrade.bin
-    erase 0x9f030000 +$filesize&&cp.b $fileaddr 0x9f030000 $filesize
-    erase 0x9f680000 +0x10000
-    ```
+   ```shell
+   tftp 0x80060000 openwrt-ar71xx-generic-wpj558-squashfs-sysupgrade.bin
+   erase 0x9f030000 +$filesize&&cp.b $fileaddr 0x9f030000 $filesize
+   erase 0x9f680000 +0x10000
+   ```
 ### 2. WPJ563
 
-    ```shell
-    tftp 0x80060000 openwrt-ar71xx-generic-wpj563-squashfs-sysupgrade.bin
-    erase 0x9f030000 +$filesize
-    cp.b $fileaddr 0x9f030000 $filesize
-    ```
+   ```shell
+   tftp 0x80060000 openwrt-ar71xx-generic-wpj563-squashfs-sysupgrade.bin
+   erase 0x9f030000 +$filesize
+   cp.b $fileaddr 0x9f030000 $filesize
+   ```
 ### 3. WPJ531
   ```shell
   tftpboot 0x80500000 openwrt-ar71xx-generic-wpj531-squashfs-sysupgrade.bin
