@@ -127,6 +127,19 @@
           bias-pull-down;
         };
       };
+      
+      led_0_pins: led0_pinmux {
+        mux_1 {
+          pins = "gpio36";
+          function = "led0";
+          bias-pull-down;
+        };
+        mux_2 {
+          pins = "gpio40";
+          function = "led4";
+          bias-pull-down;
+        };
+      };
     };
 
     blsp_dma: dma@7884000 {
