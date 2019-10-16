@@ -80,6 +80,7 @@
         };
       };
 
+
       i2c_0_pins: i2c_0_pinmux {
         pinmux {
           function = "blsp_i2c0";
@@ -171,6 +172,12 @@
        };
      };
    };
+
+    pcie0:pci@40000000 {
+      status = "okay";
+      perst-gpio = <&tlmm 38 GPIO_ACTIVE_LOW>;
+      wake-gpio = <&tlmm 50 GPIO_ACTIVE_LOW>;
+    };
 
     mdio@90000 {
       status = "okay";
