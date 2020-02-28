@@ -140,6 +140,61 @@
           bias-pull-down;
         };
       };
+      
+      sd_0_pins: sd_0_pinmux {
+       sd0 {
+               pins = "gpio23";
+               function = "sdio";
+               vm-enable;
+       };
+       sd1 {
+               pins = "gpio24";
+               function = "sdio";
+               vm-enable;
+       };
+       sd2 {
+               pins = "gpio25";
+               function = "sdio";
+               vm-enable;
+       };
+       sd3 {
+               pins = "gpio26";
+               function = "sdio";
+               vm-enable;
+       };
+       sdclk {
+               pins = "gpio27";
+               function = "sdio";
+               vm-enable;
+       };
+       sdcmd {
+               pins = "gpio28";
+               function = "sdio";
+               vm-enable;
+       };
+       sd4 {
+               pins = "gpio29";
+               function = "sdio";
+               vm-enable;
+       };
+       sd5 {
+               pins = "gpio30";
+               function = "sdio";
+
+               vm-enable;
+       };
+       sd6 {
+               pins = "gpio31";
+               function = "sdio";
+               vm-enable;
+       };
+       sd7 {
+               pins = "gpio32";
+               function = "sdio";
+               vm-enable;
+       };
+   };
+ 
     };
 
     blsp_dma: dma@7884000 {
@@ -337,6 +392,15 @@
       status = "okay";
     };
       
+    sdhci: sdhci@7824000 {
+      status = "ok";
+      cd-gpios = <&tlmm 22 0x1>;
+      sd-ldo-gpios = <&tlmm 33 0x1>;
+      pinctrl-0 = <&sd_0_pins>;
+      pinctrl-names = "default";
+    };
+
+    
     pcie0:pci@40000000 {
       status = "okay";
       perst-gpio = <&tlmm 38 GPIO_ACTIVE_LOW>;
