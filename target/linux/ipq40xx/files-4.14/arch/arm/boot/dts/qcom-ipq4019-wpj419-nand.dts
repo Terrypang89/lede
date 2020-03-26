@@ -52,7 +52,7 @@
   };
 
   chosen {
-    bootargs-append = " clk_ignore_unused";
+    bootargs-append = " ubi.mtd=rootfs root=/dev/ubiblock0_1 clk_ignore_unused";
   };
 
   soc {
@@ -413,6 +413,16 @@
       status = "okay";
     };
   };
+
+  gpio-keys {
+		compatible = "gpio-keys";
+		reset {
+			label = "reset";
+			gpios = <&tlmm 18 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_RESTART>;
+		};
+	};
+
 };
 
 &gmac0 {
